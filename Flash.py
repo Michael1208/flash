@@ -16,7 +16,7 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():       
-    bot.status = cycle(['n.help',f'{len(bot.guilds)} Servers!', f'{len(bot.users)} Users!'])    
+    bot.status = cycle([';help',f'{len(bot.guilds)} Servers!', f'{len(bot.users)} Users!'])    
     change_status.start()                   
     print("Flash has started!")
 
