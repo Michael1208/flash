@@ -237,4 +237,32 @@ async def say(ctx, *, content):
         await ctx.send(content)
         await ctx.message.delete()
 	    
+@bot.command()
+async def avatar(ctx, member: discord.Member):
+	embed = discord.Embed(colour=member.color, timestamp=ctx.message.created_at)
+	embed.set_author(name=f"Avatar Of {member}")
+	embed.set_image(url=member.avatar_url)
+	await ctx.send(embed=embed)	
+
+@bot.command()  
+async def serverinfo(ctx):
+    guild = ctx.message.guild
+    online = len([m.status for m in guild.members if m.status == discord.Status.online or m.status == discord.Status.idle])
+    embed = discord.Embed(name="{} Server information".format(guild.name), color=0x6AA84F)
+    embed.set_thumbnail(url=guild.icon_url)
+    embed.add_field(name="Server Name", value=guild.name, inline=True)
+    embed.add_field(name="Owner", value=guild.owner.mention)
+    embed.add_field(name="Server ID", value=guild.id, inline=True)
+    embed.add_field(name="Roles", value=len(guild.roles), inline=True)
+    embed.add_field(name="Members", value=len(guild.members), inline=True)
+    embed.add_field(name="Online", value=f"**{online}/{len(guild.members)}**")
+    embed.add_field(name="Guild Created At", value=guild.created_at.strftime("%d %b %Y %H:%M"))
+    embed.add_field(name="Emojis", value=f"{len(guild.emojis)}/100")
+    embed.add_field(name="Server Region", value=str(guild.region).title())
+    embed.add_field(name="Total Channels", value=len(guild.channels))
+    embed.add_field(name="AFK Channel", value=str(guild.afk_channel))
+    embed.add_field(name="AFK Timeout", value=guild.afk_timeout)
+    embed.add_field(name="Verification Level", value=guild.verification_level)
+    await ctx.send(embed=embed)      
+
 bot.run(TOKEN)
