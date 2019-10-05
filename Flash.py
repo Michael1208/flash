@@ -128,14 +128,14 @@ async def unmute_error(ctx, error):
 async def invite(ctx):
     embed = discord.Embed(title="The Flash - Invites", color=0x6AA84F)
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
-    embed.add_field(name='**Invite Neon**', value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False)
-    embed.add_field(name='**Support Server**', value="[Support](https://discord.gg/WqtTxNV)", inline=False)
+    embed.add_field(name='**Invite Flash**', value="[Invite Flash](https://discordapp.com/api/oauth2/authorize?client_id=630054488983470101&permissions=8&scope=bot", inline=False)
+    embed.add_field(name='**Support Server**', value="[Support](https://discord.gg/vuxxnVm)", inline=False)
     await ctx.send(embed=embed)
 
 @bot.command()
 async def botinfo(ctx):
-    embed=discord.Embed(title='[Support](https://discord.gg/WqtTxNV)', description="**About Neon Bot**", color=0xff3899)
-    embed.set_author(name="Neon Bot")
+    embed=discord.Embed(title='[Support](https://discord.gg/vuxxnVm)', description="**About Neon Bot**", color=0xff3899)
+    embed.set_author(name="Flash Bot")
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed.add_field(name='What Is The Flash?', value="Flash Is A Bot Coded In Discord.py Rewrite It Has Multiple Features Such As Moderation, Fun And, Music (Music In Development)" , inline=False)
     embed.add_field(name='The Bot Owners', value="Bot Developers", inline=True)
@@ -200,29 +200,29 @@ async def servers_error(ctx, error):
 async def helpmod(ctx):
     embed = discord.Embed(title="Mod Help", color=0x6AA84F)               	       
     embed = discord.Embed(title="The Flash - Moderation Commands", color=0x6AA84F)
-    embed.add_field(name="``n.ban``", value=" ``Bans a user from the server (Requires Ban Permissions!)", inline=False)
-    embed.add_field(name="``n.unban``",     value="``Unbans a user that was banned from the server (Requires Ban Permissions!)", inline=False)
-    embed.add_field(name="``n.kick``", value="Kicks a user from the server (Requires Kick Permissions!)", inline=False)
-    embed.add_field(name="``n.purge``", value="Clears (amount) of message (Requires Manage Messages Permissions!)", inline=False)
-    embed.add_field(name="``n.mute``", value="Mutes a user on the server (Requires Mute Permissions!)", inline=False)
-    embed.add_field(name="``n.unmute``", value="Unmutes a user on the server that was muted (Requires Mute Permissions!)", inline=False)
-    embed.add_field(name="``n.setnick``", value="Changes a user nickname on the server(Requires Manage Nicknames Permissions!)", inline=False)
+    embed.add_field(name="``;ban``", value=" ``Bans a user from the server (Requires Ban Permissions!)", inline=False)
+    embed.add_field(name="``;unban``",     value="``Unbans a user that was banned from the server (Requires Ban Permissions!)", inline=False)
+    embed.add_field(name="``;kick``", value="Kicks a user from the server (Requires Kick Permissions!)", inline=False)
+    embed.add_field(name="``;purge``", value="Clears (amount) of message (Requires Manage Messages Permissions!)", inline=False)
+    embed.add_field(name="``;mute``", value="Mutes a user on the server (Requires Mute Permissions!)", inline=False)
+    embed.add_field(name="``;unmute``", value="Unmutes a user on the server that was muted (Requires Mute Permissions!)", inline=False)
+    embed.add_field(name="``;setnick``", value="Changes a user nickname on the server(Requires Manage Nicknames Permissions!)", inline=False)
     await ctx.send(embed=embed)
 
 
 @bot.command(aliases=['ghelp'])
 async def helpgeneral(ctx):                   
     embed = discord.Embed(title="The Flash - General Commands", color=0x6AA84F)
-    embed.add_field(name="**n.8Ball**", value="Ask a question recieve your fortune", inline=False)
+    embed.add_field(name="**;8Ball**", value="Ask a question recieve your fortune", inline=False)
     await ctx.send(embed=embed)
     
 @bot.command()
 async def helpinfo(ctx):
     embed = discord.Embed(title="The Flash - Information Help", color=0x6AA84F)
-    embed.add_field(name="**n.botinfo**", value="Get information on the bot and the developers", inline=False)
-    embed.add_field(name="**n.userinfo**", value="Get information on a user", inline=False)
-    embed.add_field(name="**n.ping**", value="Get the bot's latency", inline=False)
-    embed.add_field(name="**n.invite**", value="Sends invites to the support server and to invite the bot", inline=False)
+    embed.add_field(name="**;botinfo**", value="Get information on the bot and the developers", inline=False)
+    embed.add_field(name="**;userinfo**", value="Get information on a user", inline=False)
+    embed.add_field(name="**;ping**", value="Get the bot's latency", inline=False)
+    embed.add_field(name="**;invite**", value="Sends invites to the support server and to invite the bot", inline=False)
     await ctx.send(embed=embed)
 
 @bot.command()
@@ -232,6 +232,9 @@ async def say(ctx, *, content):
         return
     elif content == "@here":
         await ctx.send("Please dont try to mention **@**here!")
+        return
+    elif content == "@everyone @here":
+        await ctx.send("Please dont try to mention **@**everyone and **@**here!")
         return
     else:
         await ctx.send(content)
