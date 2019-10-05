@@ -25,7 +25,7 @@ async def change_status():
     await bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name=(next(bot.status))))
 
 def owner(ctx):
-    return ctx.author.id in (349499497774055429, 505366642230951984)
+    return ctx.author.id in (349499497774055429, 505366642230951984, 629137308829876266)
     
 @bot.command()
 async def ping(ctx):
