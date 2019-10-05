@@ -144,13 +144,6 @@ async def botinfo(ctx):
     embed.set_footer(text='The Flash Bot')
     await ctx.send(embed=embed)
 										
-@bot.command(pass_context=True)
-async def balance(ctx):
-    ''': Check your balance!'''
-    member=ctx.message.author
-    check_id(member.id)
-    await bot.reply(f"you have {currency.data[member.id]} {currency.data["name"]}')
-
 @bot.command(aliases=['ui'])
 async def userinfo(ctx, member: discord.Member):       
 	
@@ -172,37 +165,6 @@ async def userinfo(ctx, member: discord.Member):
 async def userinfo_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("Missing Arguments : Member Missing")
-
-@bot.command(pass_context=True)
-async def register(ctx):
-    id = ctx.message.author.id
-    channel = ctx.message.channel
-    if id not in Credits:
-        Credits[id] = 100
-        await channel.send(f"You are now registered and have been given 100 Credits {ctx.message.author.mention}")
-        _save()
-    else:
-        await channel.send(f"You already have an account {ctx.message.author.mention}")
-
-@bot.command()
-async def level(self, ctx, user: discord.Member = None):
-        user = ctx.author if not user else user
-        user_id = str(user.id)
-        guild_id = str(ctx.guild.id)
-
-        user = await self.bot.pg_con.fetchrow("SELECT * FROM users WHERE user_id = $1 AND guild_id = $2", user_id, guild_id)
-
-        if not user:
-            await ctx.send("Member doesen't have a level")
-        else:
-            embed = discord.Embed(color=ctx.message.author.color, timestamp=ctx.message.created_at)
-
-            embed.set_author(name=f"Level - {user}", icon_url=self.bot.user.avatar_url)
-
-            embed.add_field(name="Level", value=int(user[0]['lvl']))
-            embed.add_field(name="XP", value=int(user[0]['xp']))
-
-            await ctx.send(embed=embed)
 
 @bot.command()
 @has_permissions(manage_nicknames=True)     
@@ -262,34 +224,6 @@ async def helpinfo(ctx):
     embed.add_field(name="**n.ping**", value="Get the bot's latency", inline=False)
     embed.add_field(name="**n.invite**", value="Sends invites to the support server and to invite the bot", inline=False)
     await ctx.send(embed=embed)
-
-@bot.command()
-async def announce(ctx):
-
-    channel = discord.utils.get(ctx.guild.text_channels, name="announcements")
-    embed = discord.Embed(
-            timestamp=datetime.datetime.utcnow(),
-            color=discord.Colour.gold()
-    )
-    def check(msg):
-        return msg.author == ctx.author
-
-    await ctx.send("What should the title be?")
-    title = await bot.wait_for("message", check=check)
-
-    await ctx.send("What should the announcement be?")
-    description = await bot.wait_for("message", check=check)
-
-    await ctx.send("Do you want to ping everyone?")
-    ping = await bot.wait_for("message", check=check)
-
-    embed.add_field(name=title.content, value=description.content)
-
-    if ping.content == "yes":
-        await channel.send(ctx.guild.default_role)
-
-    await channel.send(embed=embed)
-
 
 @bot.command()
 async def say(ctx, *, content):
