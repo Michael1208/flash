@@ -224,21 +224,6 @@ async def helpinfo(ctx):
     embed.add_field(name="**;ping**", value="Get the bot's latency", inline=False)
     embed.add_field(name="**;invite**", value="Sends invites to the support server and to invite the bot", inline=False)
     await ctx.send(embed=embed)
-
-@bot.command()
-async def say(ctx, *, content):
-    if content == "@everyone":
-        await ctx.send("Please dont try to mention **@**everyone!")
-        return
-    elif content == "@here":
-        await ctx.send("Please dont try to mention **@**here!")
-        return
-    elif content == "@everyone @here":
-        await ctx.send("Please dont try to mention **@**everyone and **@**here!")
-        return
-    else:
-        await ctx.send(content)
-        await ctx.message.delete()
 	    
 @bot.command()
 async def avatar(ctx, member: discord.Member):
