@@ -151,7 +151,7 @@ async def balance(ctx):
     check_id(member.id)
     await bot.reply(f"you have {currency.data[member.id]} {currency.data["name"]}')
 
-@bot.command()
+@bot.command(aliases=['ui'])
 async def userinfo(ctx, member: discord.Member):       
 	
     roles = [role for role in member.roles]
@@ -237,7 +237,7 @@ async def servers_error(ctx, error):
 @bot.command()
 async def helpmod(ctx):
     embed = discord.Embed(title="Mod Help", color=0x6AA84F)               	       
-    embed = discord.Embed(title="Neon - Moderation Commands", color=0x6AA84F)
+    embed = discord.Embed(title="The Flash - Moderation Commands", color=0x6AA84F)
     embed.add_field(name="``n.ban``", value=" ``Bans a user from the server (Requires Ban Permissions!)", inline=False)
     embed.add_field(name="``n.unban``",     value="``Unbans a user that was banned from the server (Requires Ban Permissions!)", inline=False)
     embed.add_field(name="``n.kick``", value="Kicks a user from the server (Requires Kick Permissions!)", inline=False)
@@ -250,24 +250,17 @@ async def helpmod(ctx):
 
 @bot.command(aliases=['ghelp'])
 async def helpgeneral(ctx):                   
-    embed = discord.Embed(title="Neon - General Commands", color=0x6AA84F)
+    embed = discord.Embed(title="The Flash - General Commands", color=0x6AA84F)
     embed.add_field(name="**n.8Ball**", value="Ask a question recieve your fortune", inline=False)
     await ctx.send(embed=embed)
     
 @bot.command()
 async def helpinfo(ctx):
-    embed = discord.Embed(title="Neon - Information Help", color=0x6AA84F)
+    embed = discord.Embed(title="The Flash - Information Help", color=0x6AA84F)
     embed.add_field(name="**n.botinfo**", value="Get information on the bot and the developers", inline=False)
     embed.add_field(name="**n.userinfo**", value="Get information on a user", inline=False)
     embed.add_field(name="**n.ping**", value="Get the bot's latency", inline=False)
     embed.add_field(name="**n.invite**", value="Sends invites to the support server and to invite the bot", inline=False)
-    await ctx.send(embed=embed)
-
-@bot.command()
-async def upvote(ctx):
-    embed = discord.Embed(title="Neon - Upvote Links", color=0x6AA84F)
-    embed.add_field(name="**[DBL](https://discordbots.org/bot/616619124730363924)**", value="Upvote the bot on Discord Bot List", inline=False)
-    embed.add_field(name="**[DB](https://discord.boats/bot/616619124730363924)**", value="Upvote the bot on Discord Bot List", inline=False)
     await ctx.send(embed=embed)
 
 @bot.command()
