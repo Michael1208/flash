@@ -100,29 +100,22 @@ async def unban(ctx, *, member):
 @bot.command()
 @commands.has_permissions(mute_members=True)
 async def mute(ctx, member: discord.Member=None):
+    await ctx.send("Successfully muted.")
     if not member:
         await ctx.send("Please specify a member")
         return
     role = discord.utils.get(ctx.guild.roles, name="Muted")
     await member.add_roles(role)
-@mute.error
-async def mute_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("Error Check Permissions / Server Needs Role Name Muted Spelt Excatly Like That ")
- 
- 
+
 @bot.command()
 @commands.has_permissions(mute_members=True)
 async def unmute(ctx, member: discord.Member=None):
+    await ctx.send("Successfully muted.")
     if not member:
         await ctx.send("Please specify a member")
         return
     role = discord.utils.get(ctx.guild.roles, name="Muted")
     await member.remove_roles(role)
-@unmute.error
-async def unmute_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("Error Check Permissions / Server Needs Role Name Muted Spelt Excatly Like That")
 
 @bot.command()
 async def invite(ctx):
