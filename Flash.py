@@ -54,7 +54,7 @@ async def help(ctx):
     embed.add_field(name='**General**', value=" ``;helpgeneral`` - Sends you the general commands", inline=False) 
     embed.add_field(name="**Moderation**", value="``;helpmod`` - Sends you the moderation commands", inline=False) 
     embed.add_field(name="**Information**", value="``;helpinfo`` - Sends you the information commands", inline=False)
-    embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False) 
+    embed.add_field(name="**Invite Flash**", value="[Invite Flash](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False) 
     await ctx.send(embed=embed)
 
 @bot.command(pass_context=True)
