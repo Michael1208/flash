@@ -50,10 +50,10 @@ async def purge(ctx, amount=5):
 @bot.command()
 async def help(ctx):    
     embed = discord.Embed(title="The Flash - Help & Documentation", color=0x6AA84F)
-    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
-    embed.add_field(name='**General**', value=" ``n.helpgeneral`` - Sends you the general commands", inline=False) 
-    embed.add_field(name="**Moderation**", value="``n.helpmod`` - Sends you the moderation commands", inline=False) 
-    embed.add_field(name="**Information**", value="``n.helpinfo`` - Sends you the information commands", inline=False)
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/630054488983470101/d704db91db9805f8b2f37417f62460ba.webp?size=1024")
+    embed.add_field(name='**General**', value=" ``;helpgeneral`` - Sends you the general commands", inline=False) 
+    embed.add_field(name="**Moderation**", value="``;helpmod`` - Sends you the moderation commands", inline=False) 
+    embed.add_field(name="**Information**", value="``;helpinfo`` - Sends you the information commands", inline=False)
     embed.add_field(name="**Invite Neon**", value="[Invite Neon](https://discordapp.com/oauth2/authorize?client_id=616619124730363924&scope=bot&permissions=2146958847)", inline=False) 
     await ctx.send(embed=embed)
 
@@ -120,21 +120,21 @@ async def unmute(ctx, member: discord.Member=None):
 @bot.command()
 async def invite(ctx):
     embed = discord.Embed(title="The Flash - Invites", color=0x6AA84F)
-    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
-    embed.add_field(name='**Invite Flash**', value="[Invite Flash](https://discordapp.com/api/oauth2/authorize?client_id=630054488983470101&permissions=8&scope=bot", inline=False)
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/630054488983470101/d704db91db9805f8b2f37417f62460ba.webp?size=1024")
+    embed.add_field(name='**Invite Flash**', value="[Invite Flash](https://discordapp.com/api/oauth2/authorize?client_id=630054488983470101&permissions=8&scope=bot)", inline=False)
     embed.add_field(name='**Support Server**', value="[Support](https://discord.gg/vuxxnVm)", inline=False)
     await ctx.send(embed=embed)
 
 @bot.command()
 async def botinfo(ctx):
-    embed=discord.Embed(title='[Support](https://discord.gg/vuxxnVm)', description="**About Neon Bot**", color=0xff3899)
+    embed=discord.Embed(title='[Support](https://discord.gg/vuxxnVm)', description="**About Flash Bot**", color=0xff3899)
     embed.set_author(name="Flash Bot")
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/616619124730363924/6721a098ceee307c2a32ba8de4332ff0.png?")
     embed.add_field(name='What Is The Flash?', value="Flash Is A Bot Coded In Discord.py Rewrite It Has Multiple Features Such As Moderation, Fun And, Music (Music In Development)" , inline=False)
     embed.add_field(name='The Bot Owners', value="Bot Developers", inline=True)
-    embed.add_field(name='Kyle♡#1849', value="Kyle Is Just An Average Guy Born On December 9th, Who Likes To Code And Use Discord", inline=False)
-    embed.add_field(name='Michael♡#3910', value="Michael Is Again Just An Average Guy Who Likes Coding Born June 8th", inline=False)
-    embed.set_footer(text='Neon Bot')
+    embed.add_field(name='Kyle♡#1849', value="Kyle Is Just An Average Guy, Who Likes To Code And Use Discord", inline=False)
+    embed.add_field(name='Michael♡#3910', value="Michael Is Again Just An Average Guy Who Likes Coding", inline=False)
+    embed.set_footer(text='Flash Bot')
     await ctx.send(embed=embed)
 										
 @bot.command(aliases=['ui'])
