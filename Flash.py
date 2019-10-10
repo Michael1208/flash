@@ -240,6 +240,13 @@ async def serverinfo(ctx):
     embed.add_field(name="AFK Channel", value=str(guild.afk_channel))
     embed.add_field(name="AFK Timeout", value=guild.afk_timeout)
     embed.add_field(name="Verification Level", value=guild.verification_level)
-    await ctx.send(embed=embed)      
+    await ctx.send(embed=embed)  
+	
+@bot.command()
+async def warn(ctx, person: discord.Member, *, reason = None):
+  if reason == None:
+      return
+  else:
+    await ctx.send(f"{ctx.author.mention} has been warned for: **{reason}**")
 
 bot.run(TOKEN)
