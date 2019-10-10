@@ -243,7 +243,7 @@ async def serverinfo(ctx):
     await ctx.send(embed=embed)  
 	
 @bot.command()
-@has_permission(manage_messages=True)
+@commands.has_permissions(manage_messages=True)
 async def warn(ctx, person: discord.Member, *, reason = None):
   if reason == None:
       return
