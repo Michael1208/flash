@@ -294,7 +294,6 @@ async def eval_fn(ctx, *, cmd):
 	
 @bot.command(pass_context=True)
 async def register(ctx):
-
 id = ctx.message.author.id
 
 if id not in amounts:
