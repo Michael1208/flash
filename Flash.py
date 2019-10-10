@@ -243,6 +243,7 @@ async def serverinfo(ctx):
     await ctx.send(embed=embed)  
 	
 @bot.command()
+@commands.has_permissions(manage_messages=True)
 async def warn(ctx, user: discord.Member, *, msg):
     dm = await user.create_dm()
     await dm.send(f"You have been warned in {ctx.guild.name} for: {msg}") 
