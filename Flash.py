@@ -245,6 +245,7 @@ async def serverinfo(ctx):
 @bot.command()
 async def warn(ctx, person: discord.Member, *, reason = None):
   if reason == None:
+print("Test")
       return
   else:
     await ctx.send(f"{user.mention} has been warned for: **{reason}**")
