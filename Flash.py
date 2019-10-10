@@ -250,7 +250,7 @@ async def warn(ctx, user: discord.Member, *, msg):
     await ctx.message.delete()
 
 @commands.command()
-    async def warnings(self, ctx, member : discord.Member):
+async def warnings(self, ctx, member : discord.Member):
         keyID = str(member.id)
         if keyID not in warns:
             warns[keyID] = []
