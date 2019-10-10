@@ -296,15 +296,15 @@ async def eval_fn(ctx, *, cmd):
 async def register(ctx):
     id = ctx.message.author.id
 
-    if id not in amounts:
+if id not in amounts:
 
-    amounts[id] = 100
+amounts[id] = 100
 
-    await bot.say("You are now registered")
+await bot.say("You are now registered")
 
-    _save()
+_save()
 
-    else:
+else:
 
 await bot.say("You already have an account")
 
