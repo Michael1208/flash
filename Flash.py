@@ -246,7 +246,7 @@ async def serverinfo(ctx):
 async def warn(ctx, user: discord.Member, *, msg):
     dm = await user.create_dm()
     await dm.send(f"You have been warned in {ctx.guild.name} for: {msg}") 
-    await ctx.send(f"{person.mention} has been warned for: {reason}")
+    await ctx.send(f"{user.mention} has been warned for: {msg}")
     await ctx.message.delete()
 
 @commands.command()
