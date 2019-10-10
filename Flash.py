@@ -247,6 +247,6 @@ async def warn(ctx, person: discord.Member, *, reason = None):
   if reason == None:
       return
   else:
-    await ctx.send(f"{ctx.user.mention} has been warned for: **{reason}**")
+    await ctx.send(f"{ctx.author.mention} has been warned for: **{reason}**")
 
 bot.run(TOKEN)
