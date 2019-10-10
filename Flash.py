@@ -249,18 +249,4 @@ async def warn(ctx, user: discord.Member, *, msg):
     await ctx.send(f"{user.mention} has been warned for: {msg}")
     await ctx.message.delete()
 
-@commands.command()
-async def warnings(self, ctx, member : discord.Member):
-        keyID = str(member.id)
-        if keyID not in warns:
-            warns[keyID] = []
-        warnings = warns[keyID]
-        count = 1
-        warnMsgList = [f'{member.name}#{member.discriminator} has **{len(warnings)}** warnings!']
-        for warning in warnings:
-            warnMsgList.append(f'{count}) `{warning}`')
-            count += 1
-        warnMsg = '\n    '.join(warnMsgList)
-        await ctx.send(warnMsg)
-
 bot.run(TOKEN)
