@@ -243,21 +243,11 @@ async def serverinfo(ctx):
     await ctx.send(embed=embed)  
 	
 @bot.command()
+@commands.has_permissions(manage_messages=True)
 async def warn(ctx, person: discord.Member, *, reason = None):
   if reason == None:
       return
   else:
     await ctx.send(f"{person.mention} has been warned for: **{reason}**")
-
- @bot.command()
-    async def blackandwhite(self, ctx, user:discord.Member=None):
-        """Turns your avatar or the specified user's avatar black and white"""
-        await ctx.channel.trigger_typing()
-        if user is None:
-            user = ctx.author
-        download_file(get_avatar(user, animate=False), "data/blackandwhite.png")
-        avatar = Image.open("data/blackandwhite.png").convert("L")
-        avatar.save("data/blackandwhite.png")
-        await ctx.send(file=discord.File("data/blackandwhite.png"))
 
 bot.run(TOKEN)
