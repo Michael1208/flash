@@ -291,21 +291,5 @@ async def eval_fn(ctx, *, cmd):
 
     result = (await eval(f"{fn_name}()", env))
     await ctx.send(result)
-	
-@bot.command(pass_context=True)
-async def register(ctx):
-    id = ctx.message.author.id
-
-if id not in amounts:
-
-amounts[id] = 100
-
-await bot.say("You are now registered")
-
-_save()
-
-else:
-
-await bot.say("You already have an account")
 
 bot.run(TOKEN)
