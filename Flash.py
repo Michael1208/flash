@@ -249,7 +249,7 @@ async def warn(ctx, person: discord.Member, *, reason = None):
   else:
     await ctx.send(f"{person.mention} has been warned for: **{reason}**")
 
- @commands.command()
+ @bot.command()
     async def blackandwhite(self, ctx, user:discord.Member=None):
         """Turns your avatar or the specified user's avatar black and white"""
         await ctx.channel.trigger_typing()
