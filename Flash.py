@@ -249,7 +249,7 @@ async def warn(ctx, user: discord.Member, *, msg):
     await ctx.send(f"{person.mention} has been warned for: {reason}")
     await ctx.message.delete()
 
-@bot.command()
+@commands.command()
     async def warnings(self, ctx, member : discord.Member):
         keyID = str(member.id)
         if keyID not in warns:
