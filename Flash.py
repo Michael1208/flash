@@ -243,14 +243,13 @@ async def serverinfo(ctx):
     await ctx.send(embed=embed)  
 	
 @bot.command()
-@commands.has_permissions(manage_messages=True)
-async def warn(ctx, person: discord.Member, *, reason = None):
-  if reason == None:
-      return
-  else:
-    await ctx.send(f"{person.mention} has been warned for: **{reason}**")
+async def warn(ctx, user: discord.Member, *, msg):
+    dm = await user.create_dm()
+    await dm.send(f"You have been warned in {ctx.guild.name} for: {msg}") 
+    await ctx.send(f"{person.mention} has been warned for: {reason}")
+    await ctx.message.delete()
 
-  @commands.command()
+@bot.command()
     async def warnings(self, ctx, member : discord.Member):
         keyID = str(member.id)
         if keyID not in warns:
