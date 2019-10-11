@@ -340,4 +340,11 @@ async def on_guild_join(self, guild):
         except:
             pass
 
+@bot.command()
+async def suggest(ctx, msg):
+         channel=bot.get_channel("632316297027518464")
+         embed=discord.Embed(title='**New Suggestion**', description="**New Suggestion!**", color=0xff3899)
+         embed.add_field(name='{msg}', inline=True)
+         await ctx.send(embed=embed) 
+
 bot.run(TOKEN)
