@@ -305,9 +305,9 @@ async def balance(message):
             await message.channel.send(msg)
             return
 
-   @commands.command(pass_context=True, hidden=True)
-    @checks.is_dev()
-    async def eval(self, ctx):
+@commands.command(pass_context=True, hidden=True)
+@checks.is_dev()
+async def eval(self, ctx):
         msg = ctx.message
 
         variables = {
