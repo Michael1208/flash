@@ -293,7 +293,7 @@ async def eval_fn(ctx, *, cmd):
     result = (await eval(f"{fn_name}()", env))
     await ctx.send(result)
 	
-@bot.command(aliases=['bal, balance'])
+@bot.command(aliases=['balance'])
 async def check_balance(message):
     userID = message.author.id
     for u in userlist:
