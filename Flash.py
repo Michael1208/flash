@@ -346,5 +346,27 @@ async def suggest(ctx, msg):
          embed=discord.Embed(title='**New Suggestion**', description="**New Suggestion!**", color=0xff3899)
          embed.add_field(name='{msg}', inline=True)
          await ctx.send(embed=embed) 
+	
+@commands.command()
+async def giveaway(self, ctx: commands.Context, *, description: str):
+        """Start a new Giveaway."""
+        ends_at = ctx.message.created_at + config.giveaway_duration
+
+        embed = discord.Embed(
+            title=description,
+            description=f'React with {self.emoji} to win!',
+            color=discord.Color.magenta(),
+            timestamp=ends_at,
+        )
+        embed.set_footer(text='Ends at')
+
+        msg = await self.channel.send(embed=embed)
+        await msg.add_reaction(self.emoji)
+
+        await self.config.put(ends_at.timestamp(), msg.id)
+        await ctx.send('Giveaway started!')
+
+        if self._giveaway_task.done():
+            self._giveaway_task = self.bot.loop.create_task(self.giveaway_loop())
 
 bot.run(TOKEN)
