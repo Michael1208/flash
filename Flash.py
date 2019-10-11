@@ -13,6 +13,9 @@ bot = commands.Bot(command_prefix=';')
 TOKEN = os.environ['TOKEN']
 bot.remove_command('help')
 
+def dev(ctx):
+
+    return ctx.author.id in (349499497774055429, 505366642230951984)
 
 @bot.event
 async def on_ready():       
