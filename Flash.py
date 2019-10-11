@@ -347,26 +347,13 @@ async def suggest(ctx, msg):
          embed.add_field(name='{msg}', inline=True)
          await ctx.send(embed=embed) 
 	
-@commands.command()
-async def giveaway(self, ctx: commands.Context, *, description: str):
-        """Start a new Giveaway."""
-        ends_at = ctx.message.created_at + config.giveaway_duration
-
-        embed = discord.Embed(
-            title=description,
-            description=f'React with {self.emoji} to win!',
-            color=discord.Color.magenta(),
-            timestamp=ends_at,
-        )
-        embed.set_footer(text='Ends at')
-
-        msg = await self.channel.send(embed=embed)
-        await msg.add_reaction(self.emoji)
-
-        await self.config.put(ends_at.timestamp(), msg.id)
-        await ctx.send('Giveaway started!')
-
-        if self._giveaway_task.done():
-            self._giveaway_task = self.bot.loop.create_task(self.giveaway_loop())
+@bot.command()
+async def cat(ctx):
+    res = await bot.session.get("https://catapi.glitch.me/")
+    data = await res.json()
+    embed = discord.Embed(color=0x36393E)
+    embed.set_image(url = data['url'])
+    await ctx.send("**Heres your random cat**",embed=embed)
+    await session.close()
 
 bot.run(TOKEN)
