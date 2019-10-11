@@ -305,4 +305,30 @@ async def check_balance(message):
             await message.channel.send(msg)
             return
 
+@commands.command()
+    @commands.has_permissions(manage_guild = True)
+    async def muterole(self, ctx, *, role : discord.Role = None):
+        """
+        Set the servers mute role.
+        """
+        if role == None:
+            embed = discord.Embed(
+                title = "Mute Role Error",
+                description = "Please provide a role!",
+                color = self.errorcolor
+            )
+            await ctx.send(embed = embed)
+        else:
+            with open(r"PATHHERE\Data\mute_roles.json", "r") as f:
+                mute_roles = json.load(f)
+            mute_roles[str(ctx.guild.id)] = role.id
+            embed = discord.Embed(
+                title = "Mute Role",
+                description = f"{ctx.message.guild}'s mute role is  now {role.mention}",
+                color = self.blurple
+            )
+            await ctx.send(embed = embed)
+            with open(r"PATHHERE\Data\mute_roles.json", "w") as f:
+                json.dump(mute_roles, f, indent = 4)
+
 bot.run(TOKEN)
