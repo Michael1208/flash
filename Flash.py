@@ -309,7 +309,7 @@ async def balance(message):
             return
 
 @commands.command(pass_context=True, hidden=True)
-@checks.is_dev()
+@commands.check(dev)
 async def eval(self, ctx):
         msg = ctx.message
 
