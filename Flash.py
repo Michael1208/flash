@@ -293,8 +293,8 @@ async def eval_fn(ctx, *, cmd):
     result = (await eval(f"{fn_name}()", env))
     await ctx.send(result)
 	
-@bot.command(aliases=['balance'])
-async def check_balance(message):
+@bot.command(aliases=['bal'])
+async def balance(message):
     userID = message.author.id
     for u in userlist:
         if u.ID == userID:
@@ -304,5 +304,21 @@ async def check_balance(message):
                   "`Default investment amount: ${}`".format(u.balance, u.get_outstanding(), u.default_invest)
             await message.channel.send(msg)
             return
+
+   @commands.command(pass_context=True, hidden=True)
+    @checks.is_dev()
+    async def eval(self, ctx):
+        msg = ctx.message
+
+        variables = {
+            'ctx': ctx,
+            'bot': self.bot,
+            'message': msg,
+            'server': msg.server,
+            'channel': msg.channel,
+            'author': msg.author,
+            'rtfs': self.eval_format_source,
+            '_': None,
+        }
 
 bot.run(TOKEN)
