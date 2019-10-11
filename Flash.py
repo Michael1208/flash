@@ -292,5 +292,16 @@ async def eval_fn(ctx, *, cmd):
 
     result = (await eval(f"{fn_name}()", env))
     await ctx.send(result)
+	
+async def check_balance(message):
+    userID = message.author.id
+    for u in userlist:
+        if u.ID == userID:
+            msg = "Here is your balance information:\n" \
+                  "`Balance: ${}`\n" \
+                  "`Total Investments Outstanding: ${}`\n" \
+                  "`Default investment amount: ${}`".format(u.balance, u.get_outstanding(), u.default_invest)
+            await message.channel.send(msg)
+            return
 
 bot.run(TOKEN)
