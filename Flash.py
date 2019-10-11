@@ -321,4 +321,20 @@ async def balance(message):
             '_': None,
         }
 
+@bot.command()
+async def on_guild_join(self, guild):
+        await self.update_activity()
+        try:
+            embed = discord.Embed(color=discord.Color(value=0x36393e))
+            embed.set_author(name="Here's some stuff to get you started:")
+            embed.add_field(name="Prefix", value="`;`**")
+            embed.add_field(name="Help Command", value="Type ;help")
+            embed.add_field(name="Support Server", value="[Join, it's quite fun here](https://discord.gg/ckKnBpv)")
+            embed.add_field(name="Upvote", value="[Click here](https://discord.boats/bot/630054488983470101/vote)")
+            embed.set_thumbnail(url=config["styling"]["gifLogo"])
+            embed.set_footer(text=f"Thanks to you, Flash is now on {len(self.guilds)} servers! <3", icon_url=config["styling"]["normalLogo"])
+            await guild.system_channel.send(content="**Hello World! Thanks for inviting me! :wave: **", embed=embed)
+        except:
+            pass
+
 bot.run(TOKEN)
