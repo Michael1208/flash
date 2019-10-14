@@ -342,9 +342,12 @@ async def on_guild_join(self, guild):
 
 @bot.command()
 async def suggest(ctx, msg):
-    channel=bot.get_channel("632316297027518464")
-    embed=discord.Embed(title='**New Suggestion**', description="**New Suggestion!**", color=0xff3899)
-    embed.add_field(name='{msg}', inline=True)
+    suggestChannel = 632316297027518464
+    channel = bot.get_channel(suggestChannel)
+
+    embed=discord.Embed(title='New Suggestion', description="New Suggestion!", color=0xff3899)
+    embed.add_field(name="Details", value=f"{msg}", inline=True)
+
     await channel.send(embed=embed)
 
 @bot.command(pass_context=True)
