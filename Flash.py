@@ -345,7 +345,7 @@ async def suggest(ctx, msg):
     channel=bot.get_channel("632316297027518464")
     embed=discord.Embed(title='**New Suggestion**', description="**New Suggestion!**", color=0xff3899)
     embed.add_field(name='{msg}', inline=True)
-     await channel.send(embed=embed)
+    await channel.send(embed=embed)
 
 @bot.command(pass_context=True)
 async def joke(ctx):
