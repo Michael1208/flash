@@ -341,7 +341,7 @@ async def on_guild_join(self, guild):
             pass
 
 @bot.command()
-async def suggest(ctx, msg):
+async def suggest(ctx, *, msg):
     suggestChannel = 632316297027518464
     channel = bot.get_channel(suggestChannel)
 
