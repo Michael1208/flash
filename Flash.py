@@ -370,4 +370,9 @@ async def meme(ctx):
             embed.timestamp = datetime.datetime.utcnow()
             await bot.say(embed=embed)
 
+@bot.command(pass_context=True)
+async def connect(ctx):
+    channel = ctx.message.author.voice.voice_channel
+    await client.join_voice.channel(channel)
+
 bot.run(TOKEN)
