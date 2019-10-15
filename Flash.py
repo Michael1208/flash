@@ -375,4 +375,9 @@ async def connect(ctx):
     channel = ctx.message.author.voice.voice_channel
     await client.join_voice.channel(channel)
 
+# in your on_message event
+
+if message.content.startswith(";warnings"):
+    message.channel.send(f"You have {warnings} warnings.")
+
 bot.run(TOKEN)
